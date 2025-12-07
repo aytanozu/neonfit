@@ -1,20 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Neon Fit</title>
-  <script>
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  <title>Neon Fit — Play Now</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    if (/android/i.test(userAgent)) {
-      window.location.href = "https://play.google.com/store/apps/details?id=ANDROID_PAKET_ADIN";
-    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      window.location.href = "https://apps.apple.com/app/idIOS_APP_ID";
-    } else {
-      document.write("Neon Fit oyununu telefonundan aç!");
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-  </script>
+
+    .container {
+      max-width: 420px;
+      width: 100%;
+      padding: 32px 24px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #22d3ee, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .loading {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+
+    .store-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .android {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+    }
+
+    .ios {
+      background: linear-gradient(135deg, #60a5fa, #6366f1);
+      color: white;
+    }
+
+    .store-btn:hover {
+      transform: scale(1.04);
+      opacity: 0.95;
+    }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+  </style>
 </head>
+
 <body>
+
+  <div class="container">
+    <div class="logo">Neon Fit</div>
+    <div class="subtitle">
+      Glow block puzzle game designed to relax your mind and sharpen your logic.
+    </div>
+
+    <div class="loading" id="statusText">
+      Redirecting you to the store...
+    </div>
+
+    <a id="androidBtn" class="store-btn android" href="#">
+      ▶ Play on Android
+    </a>
+
+    <a id="iosBtn" class="store-btn ios" href="#">
+      ▶ Play on iPhone
+    </a>
+
+    <div class="footer">
+      © 2025 Neon Fit
+    </div>
+  </div>
+
+  <script>
+    const androidLink = "https://play.google.com/store/apps/details?id=ANDROID_PAKET_ADIN";
+    const iosLink = "https://apps.apple.com/app/idIOS_APP_ID";
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    document.getElementById("androidBtn").href = androidLink;
+    document.getElementById("iosBtn").href = iosLink;
+
+    setTimeout(() => {
+      if (/android/i.test(ua)) {
+        window.location.href = androidLink;
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = iosLink;
+      } else {
+        document.getElementById("statusText").innerText =
+          "Choose your platform to start playing.";
+      }
+    }, 600);
+  </script>
+
 </body>
 </html>
