@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Neon Fit</title>
+  <script>
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(userAgent)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=ANDROID_PAKET_ADIN";
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      window.location.href = "https://apps.apple.com/app/idIOS_APP_ID";
+    } else {
+      document.write("Neon Fit oyununu telefonundan aç!");
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
