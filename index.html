@@ -9,38 +9,64 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
+      background: radial-gradient(circle at top, #020617, #000000);
       color: white;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #22d3ee, transparent 70%);
+      filter: blur(80px);
+      top: -80px;
+      left: -80px;
+    }
+
+    .bg-glow.magenta {
+      background: radial-gradient(circle, #ec4899, transparent 70%);
+      top: auto;
+      bottom: -80px;
+      left: auto;
+      right: -80px;
     }
 
     .container {
+      position: relative;
       max-width: 420px;
       width: 100%;
-      padding: 32px 24px;
+      padding: 36px 26px;
       text-align: center;
       background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+      backdrop-filter: blur(22px);
+      border-radius: 24px;
+      box-shadow:
+        0 0 40px rgba(34, 211, 238, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.06);
+      z-index: 2;
     }
 
     .logo {
-      font-size: 34px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
       margin-bottom: 12px;
-      background: linear-gradient(90deg, #22d3ee, #a855f7);
+      background: linear-gradient(90deg, #22d3ee, #ec4899);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 10px rgba(34, 211, 238, 0.8),
+        0 0 24px rgba(236, 72, 153, 0.6);
     }
 
     .subtitle {
       font-size: 15px;
-      opacity: 0.8;
+      opacity: 0.85;
       line-height: 1.6;
       margin-bottom: 28px;
     }
@@ -48,36 +74,61 @@
     .loading {
       font-size: 14px;
       opacity: 0.7;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .store-btn {
       display: block;
       width: 100%;
-      padding: 14px;
-      margin-bottom: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
       font-size: 16px;
-      font-weight: 600;
-      border-radius: 12px;
+      font-weight: 700;
+      border-radius: 16px;
       border: none;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .store-btn:hover::after {
+      transform: translateX(100%);
     }
 
     .android {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: white;
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #052e16;
+      box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.9),
+        0 0 32px rgba(34, 197, 94, 0.6);
     }
 
     .ios {
-      background: linear-gradient(135deg, #60a5fa, #6366f1);
-      color: white;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: #020617;
+      box-shadow:
+        0 0 12px rgba(96, 165, 250, 0.9),
+        0 0 32px rgba(167, 139, 250, 0.6);
     }
 
     .store-btn:hover {
-      transform: scale(1.04);
-      opacity: 0.95;
+      transform: scale(1.05);
     }
 
     .footer {
@@ -90,10 +141,14 @@
 
 <body>
 
+  <div class="bg-glow"></div>
+  <div class="bg-glow magenta"></div>
+
   <div class="container">
     <div class="logo">Neon Fit</div>
+
     <div class="subtitle">
-      Glow block puzzle game designed to relax your mind and sharpen your logic.
+      Relax your mind, train your brain, and enjoy the glow.
     </div>
 
     <div class="loading" id="statusText">
