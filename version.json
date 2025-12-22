@@ -1,0 +1,6 @@
+{
+  "android_min_version": "1.0.0",
+  "ios_min_version": "1.0.0",
+  "force_update": true,
+  "update_message": "New features added! Please update."
+}
